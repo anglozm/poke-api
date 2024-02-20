@@ -89,6 +89,7 @@ const sortByName = (arr) => arr.sort((a, b) => (a.name > b.name) ? 1 : -1);
 const showModalPokemonCreate = () => {
     isPokemonCreate.value = true;
     nextTick(() => nameInput.value.focus());
+    form.type = pokemonType.value[0].name;
     console.log('On create confirm...');
 };
 
