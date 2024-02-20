@@ -96,6 +96,14 @@ const showModalPokemonUpdate = (poke) => {
     isPokemonUpdate.value = true;
     nextTick(() => nameInput.value.focus());
     pokeId.value = poke.id;
+
+    const selectedPokemon = pokemon.value.find((element) => element.id === poke.id);
+    const name = selectedPokemon.name;
+    const type = selectedPokemon.type;
+
+    form.name = name.toLowerCase();
+    form.type = type;
+
     console.log('On update confirm... Id:', pokeId.value);
 };
 
@@ -122,8 +130,6 @@ const submitPokemonCreate = async () => {
 
         pokemon.value = await getPokemonList();
         emptyPokeList.value = pokemon.value.length !== 0;
-
-        console.log('... Pokemon Created');
     } catch (error) {
         console.error(error);
     }
@@ -138,8 +144,6 @@ const submitPokemonUpdate = async () => {
         });
 
         pokemon.value = await getPokemonList();
-
-        console.log('... Update confirmed. Id:', pokeId.value);
     } catch (error) {
         console.error(error);
     }
@@ -154,8 +158,6 @@ const submitPokemonDelete = async () => {
 
         pokemon.value = await getPokemonList();
         emptyPokeList.value = pokemon.value.length !== 0;
-
-        console.log('... Delete confirmed. Id:', pokeId.value);
     } catch (error) {
         console.error(error);
     }
@@ -164,16 +166,19 @@ const submitPokemonDelete = async () => {
 const closeModalCreate = async () => {
     isPokemonCreate.value = false;
     form.reset();
+    console.log('... Pokemon Created');
 };
 
 const closeModalUpdate = () => {
     isPokemonUpdate.value = false;
     form.reset();
+    console.log('... Update confirmed. Id:', pokeId.value);
 };
 
 const closeModalDelete = () => {
     isPokemonDelete.value = false;
     form.reset();
+    console.log('... Delete confirmed. Id:', pokeId.value);
 };
 
 const closeModalDetails = async () => {
