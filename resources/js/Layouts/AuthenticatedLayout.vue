@@ -18,7 +18,7 @@ const showingNavigationDropdown = ref(false);
                         <div class="flex">
                             <!-- Logo -->
                             <div class="shrink-0 flex items-center">
-                                <img src="/images/pokeball.png" alt="Pokemon logo" class="w-10 h-10" />
+                                <img src="/images/pokeball_icon.png" alt="Pokemon logo" class="w-10 h-10" />
                             </div>
 
                             <!-- Navigation Links -->
